@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCSP Portfolio – Veerabatthini Shivani</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050a0f;
+            --surface: #0b1420;
+            --surface2: #111d2e;
+            --accent: #00d4ff;
+            --accent2: #7c3aed;
+            --accent3: #10b981;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --border: rgba(0, 212, 255, 0.15);
+            --glow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-right {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(ellipse, rgba(124, 58, 237, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            background: rgba(5, 10, 15, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 10% 80px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero-tag::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(42px, 7vw, 88px);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            -webkit-text-stroke: 1px var(--accent);
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 400;
+            color: var(--muted);
+            margin-bottom: 32px;
+            max-width: 520px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 8px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.08), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                transform: translateX(200%);
+            }
+        }
+
+        .project-banner {
+            position: relative;
+            z-index: 1;
+            margin: 0 48px 80px;
+            padding: 40px 48px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, rgba(124, 58, 237, 0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .project-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .project-domain {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .project-domain span {
+            color: var(--accent3);
+        }
+
+        .shield-icon {
+            width: 80px;
+            height: 80px;
+            opacity: 0.6;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 10%;
+        }
+
+        .section-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(26px, 4vw, 42px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 48px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 60%);
+            margin-bottom: 64px;
+            opacity: 0.3;
+        }
+
+        .competency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+
+        .comp-card {
+            background: var(--surface);
+            padding: 40px 36px;
+            transition: background 0.3s;
+            cursor: default;
+        }
+
+        .comp-card:hover {
+            background: var(--surface2);
+        }
+
+        .comp-card.full {
+            grid-column: 1 / -1;
+        }
+
+        .comp-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.25em;
+            margin-bottom: 16px;
+        }
+
+        .comp-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .comp-objective {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-style: italic;
+            line-height: 1.6;
+            border-left: 2px solid var(--border);
+            padding-left: 14px;
+        }
+
+        .comp-section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent3);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            margin-top: 22px;
+        }
+
+        /* Paragraph style for competency body text */
+        .comp-para {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .comp-para+.comp-para {
+            margin-top: 12px;
+        }
+
+        .evidence-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .evidence-pill {
+            padding: 5px 14px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 2px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            background: rgba(0, 212, 255, 0.04);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .cert-card {
+            padding: 18px 20px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            background: rgba(0, 212, 255, 0.03);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.06);
+        }
+
+        .cert-name {
+            font-size: 12px;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .cert-org {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .references-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ref-item {
+            background: var(--surface);
+            padding: 28px 36px;
+            transition: background 0.2s;
+        }
+
+        .ref-item:hover {
+            background: var(--surface2);
+        }
+
+        .ref-authors {
+            font-size: 12px;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            margin-bottom: 6px;
+        }
+
+        .ref-title {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .ref-venue {
+            font-size: 12px;
+            color: var(--accent3);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .ref-note {
+            display: inline-block;
+            font-size: 11px;
+            color: var(--muted);
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 3px 10px;
+            border-radius: 2px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 48px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .footer-left {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-right {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            section {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .project-banner {
+                margin: 0 24px 60px;
+                padding: 28px 24px;
+                grid-template-columns: 1fr;
+            }
+
+            .shield-icon {
+                display: none;
+            }
+
+            .competency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-right"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-brand">Grand Challenges Scholars Program</div>
+        <ul class="nav-links">
+            <li><a href="#competencies">Competencies</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero fade-in" style="transition-delay:0.1s">
+        <h1>Veerabatthini<br><span>Shivani</span></h1>
+        <p class="hero-subtitle">Goal : Secure Cyberspace</p>
+        <div class="hero-meta">
+            <div class="meta-item">
+                <span class="meta-label">Student ID</span>
+                <span class="meta-value">22E51A6263</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Branch</span>
+                <span class="meta-value">CSE – Cyber Security</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Institution</span>
+                <span class="meta-value">HITAM</span>
+            </div>
+        </div>
+        <div class="hero-badge">GCSP Portfolio 2025 - 26</div>
+    </header>
+
+    <!-- PROJECT BANNER -->
+    <div class="project-banner fade-in" style="transition-delay:0.25s">
+        <div>
+            <div class="project-label">Flagship Project</div>
+            <div class="project-title">Mobile Defender</div>
+            <div class="project-domain">Mobile Threat Detection &amp; Resolution App &nbsp;·&nbsp; Domain: <span>Cyber
+                    Security / Mobile Security</span></div>
+        </div>
+        <svg class="shield-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 8L12 20V40C12 57.6 24.4 73.6 40 76C55.6 73.6 68 57.6 68 40V20L40 8Z" stroke="#00d4ff"
+                stroke-width="1.5" fill="rgba(0,212,255,0.05)" />
+            <path d="M28 40L36 48L52 32" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <!-- COMPETENCIES -->
+    <section id="competencies">
+        <span class="section-number">COMPETENCY AREAS</span>
+        <h2 class="section-title">Five Core<br>Competencies</h2>
+        <div class="section-divider"></div>
+
+        <div class="competency-grid">
+
+            <!-- 1. Research -->
+            <div class="comp-card fade-in">
+                <div class="comp-number">COMPETENCY 01</div>
+                <div class="comp-title">Research</div>
+                <div class="comp-objective">
+                    To study how mobile threats work and use that knowledge to design and build an effective security
+                    solution called Mobile Defenders that protects Android users from real-world cyber attacks.
+                </div>
+
+                <p class="comp-para">Mobile phones are used for banking, communication, and storing personal data,
+                    making them a major target for cybercriminals. To address this, I conducted research to understand
+                    how different types of mobile threats — such as malware, phishing links, ransomware, and fake apps —
+                    work and how they can be detected and stopped.</p>
+                <p class="comp-para">I started by studying existing research papers from international journals,
+                    including landmark works like Drebin, DL-Droid, and Andromaly, to understand what solutions already
+                    exist and where they fall short. This helped me identify that most existing tools depend on cloud
+                    processing, consume too many resources, and do not explain threats to users in simple language.</p>
+                <p class="comp-para">Based on this gap, I worked on designing Mobile Defenders — an on-device security
+                    app that uses both static analysis (checking app permissions and code) and dynamic analysis
+                    (monitoring real-time app behavior) to detect threats. I also designed the system architecture,
+                    detection logic, and auto-resolve feature that removes threats with a single tap.</p>
+                <p class="comp-para">The research was published in two papers in the International Journal of Creative
+                    Research Thoughts (IJCRT) — a UGC approved journal with an impact factor of 7.97.</p>
+
+                <div class="evidence-wrap">
+                    <span class="evidence-pill" data-cert="ijcrt">International Journal of Creative Research
+                        Thought</span>
+                    <a href="certificates/ijcrt_research_paper.pdf" target="_blank" class="evidence-pill" style="
+          text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+        ">
+                        <svg width="10" height="11" viewBox="0 0 10 11" fill="none" style="flex-shrink:0">
+                            <path d="M1 1h5l3 3v6H1V1z" stroke="currentColor" stroke-width="1"
+                                stroke-linejoin="round" />
+                            <path d="M6 1v3h3" stroke="currentColor" stroke-width="1" stroke-linejoin="round" />
+                            <path d="M3 6h4M3 8h2" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                        </svg>
+                        Research Paper — Mobile Defenders (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. Multi-Disciplinary -->
+            <div class="comp-card fade-in" style="transition-delay:0.1s">
+                <div class="comp-number">COMPETENCY 02</div>
+                <div class="comp-title">Multi-Disciplinary</div>
+                <div class="comp-objective">To use knowledge from subjects outside my main field of Computer Science —
+                    specifically Law and Management — and apply them in building Mobile Defenders to make it a more
+                    complete and useful app.</div>
+                <p class="comp-para">Building Mobile Defenders was not just about coding. I used knowledge from two
+                    completely different subjects — Law and Management — to make the app more useful and well-planned.
+                </p>
+                <p class="comp-para">Through my Cyberlaw subject, I studied the Indian IT Act 2000 and its key
+                    provisions — Section 66 (unauthorized access), Section 66C (identity theft), Section 66D (phishing),
+                    and Section 43 (data theft). This legal knowledge was directly applied inside Mobile Defenders
+                    through a dedicated Cyber Safety and Legal Awareness screen, which informs users about their digital
+                    rights and the laws that protect them. This feature is not found in normal antivirus apps and it
+                    came directly from what I learned in Cyberlaw.</p>
+                <p class="comp-para">I also completed the IBM SkillsBuild course "Navigating the Project Management
+                    Lifecycle" on 06 November 2025. This course taught me how to plan a project properly, manage
+                    timelines, handle risks and deliver work in an organized way. I used these skills to plan the
+                    development of Mobile Defenders step by step — from research to design to coding to testing to final
+                    publication — making sure everything was completed on time.</p>
+                <p class="comp-para">Together, these two disciplines from Law and Management complemented my core CS
+                    knowledge to produce a more complete, legally grounded, and well-managed engineering solution.</p>
+
+                <div class="evidence-wrap">
+                    <span class="evidence-pill" data-cert="ibm">IBM SkillsBuild — Project Management Lifecycle</span>
+                    <span class="evidence-pill" data-cert="mobile_app">Mobile Defenders App — Cyber Safety & Legal
+                        Awareness</span>
+                </div>
+            </div>
+
+            <!-- 3. Entrepreneurship -->
+            <div class="comp-card fade-in">
+                <div class="comp-number">COMPETENCY 03</div>
+                <div class="comp-title">Entrepreneurship</div>
+                <div class="comp-objective">To understand how a technology project like Mobile Defenders can be turned
+                    into a real product that solves a market problem and creates value for society.</div>
+                <p class="comp-para">During the development of Mobile Defenders, I started thinking beyond just building
+                    the app. I asked questions like — Who needs this app? How will people find it? Can it become a real
+                    business? To answer these, I created a Business Model Canvas (BMC) for Mobile Defenders.</p>
+                <p class="comp-para">A Business Model Canvas is a simple tool used by startups and entrepreneurs to plan
+                    how a product can work as a real business. It helped me think about Mobile Defenders not just as a
+                    college project but as a product that real people can use and benefit from. I identified
+                    non-technical Android users — especially students, elderly people, and rural communities in India —
+                    as the primary customer segment, and designed a freemium revenue model offering free basic
+                    protection with paid advanced features like scheduled scans and PDF reports. I also planned B2B
+                    licensing to colleges and institutions as a future growth path.</p>
+                <p class="comp-para">I also completed the IBM SkillsBuild course on Navigating the Project Management
+                    Lifecycle which taught me how to plan and deliver a project step by step — just like a real product
+                    team works in a company. This exercise helped me understand product-market fit, go-to-market
+                    strategy, and sustainable business planning.</p>
+
+                <div class="evidence-wrap" style="margin-top:20px;">
+                    <span class="evidence-pill bmc-trigger"
+                        style="cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+                        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="flex-shrink:0">
+                            <rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2" />
+                            <rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2" />
+                            <rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2" />
+                            <rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
+                        Business Model Canvas — Mobile Defenders
+                    </span>
+                </div>
+            </div>
+
+            <!-- 4. Multiculturalism -->
+            <div class="comp-card fade-in" style="transition-delay:0.1s">
+                <div class="comp-number">COMPETENCY 04</div>
+                <div class="comp-title">Multiculturalism</div>
+                <div class="comp-objective">To understand how technology affects people from different cultures,
+                    backgrounds and abilities around the world, and to use that understanding to build more inclusive
+                    solutions.</div>
+                <p class="comp-para">As an engineer, I realized that technology does not work the same way for everyone.
+                    People from different countries, cultures and abilities experience technology very differently. I
+                    learned this through two courses that gave me a global and inclusive perspective.</p>
+                <p class="comp-para">I completed the Overview of Emerging Technologies course conducted by IUCEE — the
+                    Indo Universal Collaboration for Engineering Education — an international organization that connects
+                    engineers and educators across different countries. The course ran from August to October 2023 and
+                    included 6 webinars with assignments and projects, led by Dr. Shalini Gopalakrishnan, an
+                    Entrepreneur from USA. Learning from an international expert helped me understand how technology
+                    trends are viewed and adopted differently across the world. I learned that what works for users in
+                    the USA may not work for users in rural India — because of differences in internet access, digital
+                    literacy, language and culture.</p>
+                <p class="comp-para">I also completed the Microsoft certified course on Developing Keyboard-Accessible
+                    Products in March 2026, which taught me how to build digital products that are accessible to people
+                    with different abilities. This made me realize that inclusive engineering means building for
+                    everyone — not just the average user.</p>
+                <p class="comp-para">Both courses directly changed how I designed Mobile Defenders. The main screen has
+                    just one button — Start Scan — so even a first-time user knows exactly what to do. When a threat is
+                    found, the app shows a clear message in plain English with no technical jargon. The Auto Resolve
+                    feature removes threats with a single tap, and the Cyber Safety and Legal Awareness screen explains
+                    cybercrime laws in simple everyday language — so any user, regardless of their education or
+                    background, can understand their digital rights.</p>
+
+                <div class="evidence-wrap">
+                    <span class="evidence-pill" data-cert="emerging">Overview of Emerging Technologies</span>
+                    <span class="evidence-pill" data-cert="microsoft">Microsoft — Develop Keyboard-Accessible
+                        Products</span>
+                    <!-- <span class="evidence-pill" data-cert="mobile_app">Mobile Defenders — Cyber Safety &amp; Legal
+                        Awareness (App)</span> -->
+                </div>
+            </div>
+
+            <!-- 5. Social Consciousness (full width) -->
+            <div class="comp-card full fade-in">
+                <div class="comp-number">COMPETENCY 05</div>
+                <div class="comp-title">Social Consciousness</div>
+                <div class="comp-objective">To build technology that helps society and to understand the responsibility
+                    engineers have towards the communities they serve.</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px;">
+                    <div>
+                        <p class="comp-para">As an engineering student, I believe that technology should not just be
+                            technically impressive — it should solve real problems that affect real people. My social
+                            consciousness grew through two experiences where I presented technology solutions to a wider
+                            audience and received recognition for the impact they could create.</p>
+                        <p class="comp-para">I participated in the HITAM XPLORE Problem/Service Based Project Expo on
+                            24th March 2023, where students present technology projects that solve real community
+                            problems. Participating in this expo made me realize how many different problems exist in
+                            society that technology can address. Seeing projects from students across different
+                            departments — all aimed at helping people — gave me a strong sense of what responsible
+                            engineering looks like. I secured 4th position in this competition, which validated that my
+                            work had genuine social relevance.</p>
+                        <p class="comp-para">I also participated in the HITAM Project Expo Competition on 9th June 2023
+                            and won 1st Prize. This was a significant moment because it showed that a solution built
+                            with the intention of helping ordinary people — not just technically skilled users — can be
+                            recognized and appreciated at an institutional level.</p>
+                    </div>
+                    <div>
+                        <p class="comp-para">Both experiences were directly connected to Mobile Defenders. The app was
+                            built with one clear social mission — to protect ordinary people from cyber threats that
+                            they may not even know exist. Today, cybercrime affects everyone — students, elderly people,
+                            small business owners and rural communities — but most security tools are too complicated or
+                            too expensive for the average person to use. Mobile Defenders was built to change that.</p>
+                        <p class="comp-para">The app helps society in three specific ways. First, it protects users from
+                            phishing attacks and online fraud — the most common ways people lose their money and
+                            personal data today. Second, it prevents unauthorized data theft by continuously monitoring
+                            the device for suspicious activity. Third, the Cyber Safety and Legal Awareness screen
+                            inside the app educates users about their digital rights and the laws that protect them —
+                            building long-term digital literacy in communities that need it most.</p>
+
+                        <div class="evidence-wrap">
+                            <span class="evidence-pill" data-cert="hitam">HITAM Project Expo — 1st Prize</span>
+                            <span class="evidence-pill" data-cert="hitam_xplore">HITAM XPLORE — Certificate of
+                                Appreciation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="fade-in">
+        <div class="footer-left">
+            GCSP Portfolio &nbsp;·&nbsp; Veerabatthini Shivani &nbsp;·&nbsp; 22E51A6263 &nbsp;·&nbsp; CSE – Cyber
+            Security
+        </div>
+        <div class="footer-right">Mobile Defender &nbsp;·&nbsp; HITAM</div>
+    </footer>
+
+    <!-- CERTIFICATE MODAL — image only -->
+    <div id="cert-modal" onclick="if(event.target===this)closeModal()" style="
+  display:none; position:fixed; inset:0; z-index:999;
+  background:rgba(5,10,15,0.95); backdrop-filter:blur(14px);
+  align-items:center; justify-content:center; padding:24px;
+">
+        <!-- Close button -->
+        <button onclick="closeModal()" style="
+    position:fixed; top:20px; right:24px;
+    background:rgba(11,20,32,0.9); border:1px solid rgba(0,212,255,0.25);
+    color:#e2e8f0; width:40px; height:40px; border-radius:50%;
+    font-size:20px; cursor:pointer; z-index:1000; line-height:1;
+    transition:all 0.2s;
+  " onmouseover="this.style.borderColor='#00d4ff';this.style.color='#00d4ff'"
+            onmouseout="this.style.borderColor='rgba(0,212,255,0.25)';this.style.color='#e2e8f0'">✕</button>
+
+        <!-- Certificate image -->
+        <img id="modal-img" src="" alt="Certificate" style="
+      max-width:90vw; max-height:90vh;
+      border-radius:8px;
+      border:1px solid rgba(0,212,255,0.2);
+      box-shadow:0 0 60px rgba(0,212,255,0.1);
+      animation: modalIn 0.25s ease;
+      display:none;
+    " />
+
+        <!-- Shown only if image fails to load -->
+        <div id="modal-placeholder" style="
+    display:none; flex-direction:column; align-items:center;
+    gap:16px; text-align:center;
+  ">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                <rect x="8" y="8" width="40" height="40" rx="6" stroke="#00d4ff" stroke-width="1.2"
+                    fill="rgba(0,212,255,0.04)" />
+                <path d="M28 22v10M23 32l5 5 5-5" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            <p id="modal-missing-name" style="font-family:'DM Mono',monospace;font-size:12px;color:#64748b;"></p>
+            <p style="font-size:13px;color:#64748b;max-width:300px;line-height:1.6;">
+                Place the JPG file in the same folder as this HTML file with the exact filename shown above.
+            </p>
+        </div>
+    </div>
+
+    <style>
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .evidence-pill {
+            cursor: pointer !important;
+            transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+        }
+
+        .evidence-pill:hover {
+            background: rgba(0, 212, 255, 0.12) !important;
+            border-color: rgba(0, 212, 255, 0.5) !important;
+            color: #fff !important;
+        }
+    </style>
+
+    <script>
+        /* ── Fade-in observer ── */
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+        /*
+        ═══════════════════════════════════════════════════════
+         Place your JPG files in the SAME folder as this HTML:
+        ═══════════════════════════════════════════════════════
+         📁 my-portfolio/
+            ├── gcsp_portfolio_shivani_final.html
+            ├── ijcrt_certificate.jpg
+            ├── ibm_certificate.jpg
+            ├── emerging_technologies_certificate.jpg
+            └── hitam_expo_certificate.jpg
+        ═══════════════════════════════════════════════════════
+        */
+
+        const certData = {
+            ijcrt: { img: 'certificates/ijcrt_certificate.jpg' },
+            ibm: { img: 'certificates/ibm_certificate.jpg' },
+            emerging: { img: 'certificates/emerging_technologies_certificate.jpg' },
+            microsoft: { img: 'certificates/microsoft_certificate.jpg' },
+            mobile_app: { img: 'certificates/mobile_defenders_app.jpg' },
+            hitam: { img: 'certificates/hitam_expo_certificate.jpg' },
+            hitam_xplore: { img: 'certificates/hitam_xplore_certificate.jpg' }
+        };
+
+        function openModal(key) {
+            const d = certData[key];
+            if (!d) return;
+
+            const img = document.getElementById('modal-img');
+            const ph = document.getElementById('modal-placeholder');
+
+            img.style.display = 'none';
+            ph.style.display = 'none';
+
+            img.onload = () => { img.style.display = 'block'; ph.style.display = 'none'; };
+            img.onerror = () => {
+                img.style.display = 'none';
+                document.getElementById('modal-missing-name').textContent = d.img;
+                ph.style.display = 'flex';
+            };
+            img.src = d.img;
+
+            document.getElementById('cert-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('cert-modal').style.display = 'none';
+            document.body.style.overflow = '';
+            document.getElementById('modal-img').src = '';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        document.querySelectorAll('.evidence-pill[data-cert]').forEach(pill => {
+            pill.addEventListener('click', () => openModal(pill.dataset.cert));
+        });
+    </script>
+
+    <!-- BMC MODAL -->
+    <div id="bmc-modal" onclick="if(event.target===this)closeBmc()" style="
+  display:none; position:fixed; inset:0; z-index:998;
+  background:rgba(5,10,15,0.97); backdrop-filter:blur(16px);
+  align-items:flex-start; justify-content:center;
+  overflow-y:auto; padding:20px;
+">
+        <div style="width:100%; max-width:1400px; margin:0 auto; position:relative;">
+            <button onclick="closeBmc()" style="
+      position:fixed; top:20px; right:24px;
+      background:rgba(11,20,32,0.95); border:1px solid rgba(0,212,255,0.3);
+      color:#e2e8f0; width:40px; height:40px; border-radius:50%;
+      font-size:20px; cursor:pointer; z-index:1001; line-height:1; transition:all 0.2s;
+    " onmouseover="this.style.borderColor='#00d4ff';this.style.color='#00d4ff'"
+                onmouseout="this.style.borderColor='rgba(0,212,255,0.3)';this.style.color='#e2e8f0'">✕</button>
+
+            <style>
+                .bmc-wrap {
+                    font-family: 'DM Sans', sans-serif;
+                    color: #e8eaf0;
+                    padding-top: 8px;
+                }
+
+                .bmc-wrap * {
+                    box-sizing: border-box;
+                }
+
+                .bmc-header {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    margin-bottom: 14px;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+
+                .bmc-logo-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .bmc-shield {
+                    width: 38px;
+                    height: 38px;
+                    background: linear-gradient(135deg, #7c3aed, #00e5ff);
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                    flex-shrink: 0;
+                }
+
+                .bmc-title {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #00e5ff;
+                    letter-spacing: -0.5px;
+                }
+
+                .bmc-subtitle {
+                    font-size: 13px;
+                    color: #8892a4;
+                    font-weight: 300;
+                    letter-spacing: 0.4px;
+                }
+
+                .bmc-badge {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 11px;
+                    padding: 6px 14px;
+                    border: 1px solid #00e5ff;
+                    border-radius: 4px;
+                    color: #00e5ff;
+                    letter-spacing: 1px;
+                    white-space: nowrap;
+                    align-self: flex-start;
+                }
+
+                .bmc-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1.4fr 1fr 1fr;
+                    grid-template-rows: 1fr 1fr auto;
+                    gap: 8px;
+                    min-height: 420px;
+                }
+
+                .bcell {
+                    background: #111827;
+                    border: 1px solid rgba(255, 255, 255, 0.07);
+                    border-radius: 12px;
+                    padding: 14px;
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .bcell::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 3px;
+                    border-radius: 12px 12px 0 0;
+                }
+
+                .bcell.purple::before {
+                    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+                }
+
+                .bcell.cyan::before {
+                    background: linear-gradient(90deg, #00e5ff, #06b6d4);
+                }
+
+                .bcell.blue::before {
+                    background: linear-gradient(90deg, #3b82f6, #818cf8);
+                }
+
+                .bcell.coral::before {
+                    background: linear-gradient(90deg, #f43f5e, #fb7185);
+                }
+
+                .bcell.amber::before {
+                    background: linear-gradient(90deg, #f59e0b, #fcd34d);
+                }
+
+                .bcell.green::before {
+                    background: linear-gradient(90deg, #10b981, #6ee7b7);
+                }
+
+                .blabel {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 10px;
+                    letter-spacing: 1.2px;
+                    text-transform: uppercase;
+                    margin-bottom: 12px;
+                    font-weight: 700;
+                }
+
+                .bcell.purple .blabel {
+                    color: #a78bfa;
+                }
+
+                .bcell.cyan .blabel {
+                    color: #00e5ff;
+                }
+
+                .bcell.blue .blabel {
+                    color: #60a5fa;
+                }
+
+                .bcell.coral .blabel {
+                    color: #fb7185;
+                }
+
+                .bcell.amber .blabel {
+                    color: #fcd34d;
+                }
+
+                .bcell.green .blabel {
+                    color: #6ee7b7;
+                }
+
+                .bitems {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                    flex: 1;
+                    justify-content: space-evenly;
+                }
+
+                .bitem {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 8px;
+                    font-size: 12px;
+                    color: #e8eaf0;
+                    line-height: 1.4;
+                    padding: 3px 0;
+                }
+
+                .bdot {
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    margin-top: 5px;
+                    flex-shrink: 0;
+                }
+
+                .bcell.purple .bdot {
+                    background: #a78bfa;
+                }
+
+                .bcell.cyan .bdot {
+                    background: #00e5ff;
+                }
+
+                .bcell.blue .bdot {
+                    background: #60a5fa;
+                }
+
+                .bcell.coral .bdot {
+                    background: #fb7185;
+                }
+
+                .bcell.amber .bdot {
+                    background: #fcd34d;
+                }
+
+                .bcell.green .bdot {
+                    background: #6ee7b7;
+                }
+
+                .bkp {
+                    grid-column: 1;
+                    grid-row: 1/3;
+                }
+
+                .bka {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+
+                .bvp {
+                    grid-column: 3;
+                    grid-row: 1/3;
+                    background: #1a2235 !important;
+                    border-color: rgba(59, 130, 246, 0.25) !important;
+                }
+
+                .bcr {
+                    grid-column: 4;
+                    grid-row: 1;
+                }
+
+                .bcs {
+                    grid-column: 5;
+                    grid-row: 1/3;
+                }
+
+                .bkr {
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+
+                .bch {
+                    grid-column: 4;
+                    grid-row: 2;
+                }
+
+                .bcost {
+                    grid-column: 1/4;
+                    grid-row: 3;
+                }
+
+                .brev {
+                    grid-column: 4/6;
+                    grid-row: 3;
+                }
+
+                .bcost .binner,
+                .brev .binner {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 4px 16px;
+                    flex: 1;
+                }
+
+                .bcol-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+
+                .bcol-title {
+                    font-size: 11px;
+                    font-family: 'DM Mono', monospace;
+                    letter-spacing: 0.6px;
+                    margin-bottom: 2px;
+                    opacity: 0.55;
+                }
+
+                .bcell.amber .bcol-title {
+                    color: #fcd34d;
+                }
+
+                .bcell.green .bcol-title {
+                    color: #6ee7b7;
+                }
+
+                .freemium-pill {
+                    margin-top: 10px;
+                    display: inline-block;
+                    background: rgba(16, 185, 129, 0.12);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    border-radius: 20px;
+                    padding: 4px 12px;
+                    font-size: 11px;
+                    color: #6ee7b7;
+                    font-family: 'DM Mono', monospace;
+                    letter-spacing: 0.5px;
+                }
+
+                .bsocial {
+                    margin-top: 8px;
+                    background: #111827;
+                    border: 1px solid rgba(16, 185, 129, 0.2);
+                    border-radius: 12px;
+                    padding: 12px 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                    flex-wrap: wrap;
+                }
+
+                .bsocial-label {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 10px;
+                    letter-spacing: 1.2px;
+                    color: #6ee7b7;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
+
+                .bsocial-items {
+                    display: flex;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                }
+
+                .bsocial-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 13px;
+                    color: #e8eaf0;
+                }
+
+                .bgcsp-tag {
+                    margin-top: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 10px;
+                }
+
+                .bgcsp-tag span {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 11px;
+                    color: #8892a4;
+                    letter-spacing: 0.5px;
+                }
+
+                .bgcsp-tag .bname {
+                    font-size: 12px;
+                    color: #00e5ff;
+                    font-weight: 700;
+                }
+
+                @keyframes bmcFadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(12px)
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0)
+                    }
+                }
+
+                .bmc-wrap {
+                    animation: bmcFadeIn 0.3s ease;
+                }
+            </style>
+
+            <div class="bmc-wrap">
+                <div class="bmc-header">
+                    <div class="bmc-logo-row">
+                        <div class="bmc-shield">🛡</div>
+                        <div>
+                            <div class="bmc-title">MOBILE DEFENDERS</div>
+                            <div class="bmc-subtitle">Business Model Canvas &nbsp;·&nbsp; GCSP Entrepreneurship
+                                Competency</div>
+                        </div>
+                    </div>
+                    <div class="bmc-badge">GCSP · HITAM · 2024</div>
+                </div>
+
+                <div class="bmc-grid">
+                    <div class="bcell purple bkp">
+                        <div class="blabel">Key Partners</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Android / Google ecosystem
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>HITAM &amp; academia
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Cybersecurity researchers
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Open-source ML libraries
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Google Play Store
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Govt. digital literacy orgs
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell cyan bka">
+                        <div class="blabel">Key Activities</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Static &amp; dynamic threat scanning
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Auto-resolve &amp; file recovery
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Security report generation
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Continuous model updates
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell blue bvp">
+                        <div class="blabel">Value Proposition</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Free, on-device mobile security
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>One-tap Auto Resolve feature
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Plain-language threat reports
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Zero data sent to external servers
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Lightweight — no battery drain
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Designed for non-technical users
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Static + dynamic dual analysis
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell cyan bcr">
+                        <div class="blabel">Customer Relationships</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Self-service app experience
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>In-app awareness &amp; alerts
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Community feedback loop
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Automated threat education
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell coral bcs">
+                        <div class="blabel">Customer Segments</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Non-technical Android users
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Students &amp; young adults
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Small businesses in India
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Rural &amp; semi-urban users
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Senior citizens (digital safety)
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Colleges &amp; institutions (B2B)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell cyan bkr">
+                        <div class="blabel">Key Resources</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Android SDK &amp; APIs
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>ML threat detection models
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Research &amp; dev team
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Published research (IJCRT)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell cyan bch">
+                        <div class="blabel">Channels</div>
+                        <div class="bitems">
+                            <div class="bitem">
+                                <div class="bdot"></div>Google Play Store
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>College &amp; campus outreach
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Social media campaigns
+                            </div>
+                            <div class="bitem">
+                                <div class="bdot"></div>Cybersecurity workshops
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell amber bcost">
+                        <div class="blabel">Cost Structure</div>
+                        <div class="binner">
+                            <div class="bcol-group">
+                                <div class="bcol-title">Development</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>App build &amp; maintenance
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Android testing devices
+                                </div>
+                            </div>
+                            <div class="bcol-group">
+                                <div class="bcol-title">Research</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>ML model training
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Threat database updates
+                                </div>
+                            </div>
+                            <div class="bcol-group">
+                                <div class="bcol-title">Operations</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Play Store distribution
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Minimal cloud costs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bcell green brev">
+                        <div class="blabel">Revenue Streams</div>
+                        <div class="binner">
+                            <div class="bcol-group">
+                                <div class="bcol-title">Free Tier</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Basic threat scan
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Wide adoption driver
+                                </div>
+                            </div>
+                            <div class="bcol-group">
+                                <div class="bcol-title">Premium (Paid)</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Scheduled scans
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>PDF report export
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>VPN integration
+                                </div>
+                            </div>
+                            <div class="bcol-group">
+                                <div class="bcol-title">B2B Licensing</div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Colleges &amp; institutions
+                                </div>
+                                <div class="bitem">
+                                    <div class="bdot"></div>Enterprise security packs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="freemium-pill">FREEMIUM MODEL</div>
+                    </div>
+                </div>
+
+                <div class="bsocial">
+                    <div class="bsocial-label">Social Impact &nbsp;·&nbsp; GCSP</div>
+                    <div class="bsocial-items">
+                        <div class="bsocial-item">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#6ee7b7;flex-shrink:0;"></div>
+                            Protects low-income &amp; non-technical users from cyber fraud
+                        </div>
+                        <div class="bsocial-item">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#6ee7b7;flex-shrink:0;"></div>
+                            Builds digital safety awareness in underserved communities
+                        </div>
+                        <div class="bsocial-item">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#6ee7b7;flex-shrink:0;"></div>
+                            Addresses Grand Challenge: Secure Cyberspace
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bgcsp-tag">
+                    <span>Prepared by</span>
+                    <span class="bname">V. Shivani · 22E51A6263 · CSE Cyber Security · HITAM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.bmc-trigger').addEventListener('click', () => {
+            document.getElementById('bmc-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        function closeBmc() {
+            document.getElementById('bmc-modal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeBmc(); if (typeof closeModal === 'function') closeModal(); }
+        });
+    </script>
+</body>
+
+</html>
